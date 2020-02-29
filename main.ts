@@ -1,18 +1,19 @@
-class courses {
+export class courses {
   public title: string; // public property
-  private author: string; // part of #1 , private property
+  //   private author: string; // part of #1 , private property
+  private rating: number;
   protected price: number; // protected property
   static book: string; //static property
 
   // one way to give value to private property outside of class #1
-  constructor(public auth) {
-    this.author = auth;
-  }
+  //   constructor(public auth) {
+  //     this.author = auth;
+  //   }
 
   // 2nd way to give value to private property #2
-  //   constructor(private author) {
-  //     console.log(`Author: ${author}`);
-  //   }
+  constructor(private author) {
+    console.log(`Author: ${author}`);
+  }
 
   public course1() {
     if (this.title) {
@@ -47,6 +48,15 @@ class courses {
     }
   }
 
+  private course6() {
+    if (this.author) {
+      console.log(`author from private method: ${this.author}`);
+    }
+  }
+
+  public publishDate() {
+    console.log("Date is Jan");
+  }
   // getter and setter for price
   get courseprice() {
     return this.price;
@@ -59,29 +69,31 @@ class courses {
   // 3rd way to give value to private property outside of class #3
 
   //   get courseauthor() {
-  //     return this.author;
+  //     return this.author
   //   }
 
-  //   set courseauthor(courseauthor: string) {
-  //     this.author = courseauthor;
-  //   }
+  //getter setter for private function
+
+  get authors() {
+    return this.course6();
+  }
 }
 
-let cour = new courses("alex"); // instance creation to access class
+// let cour = new courses("alex"); // instance creation to access class
 
-//public property
-cour.title = "I am legend";
+// //public property
+// cour.title = "I am legend";
 
-//private property using getter setter
-cour.courseprice = 100;
-// cour.courseauthor = "alex";// part of #3
+// //private property using getter setter
+// cour.courseprice = 100;
+// // cour.courseauthor = "alex";// part of #3
 
-//static property
-courses.book = "goosebumps";
+// //static property
+// courses.book = "goosebumps";
 
-//invoke functions in class
-cour.course1();
-cour.course2();
-cour.course3();
-cour.course4();
-courses.course5();
+// //invoke functions in class
+// cour.course1();
+// cour.course2();
+// cour.course3();
+// cour.course4();
+// courses.course5();
