@@ -33,3 +33,6 @@ inherit.courseprice = 400;
 inherit.courses1();
 inherit.authors; // private functions using getter,setter dont need ()
 inherit.courses2();
+
+inherit.abstract1();
+inherit.abstract22;

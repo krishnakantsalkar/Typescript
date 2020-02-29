@@ -1,4 +1,6 @@
-export class courses {
+import { Abstract } from "./abstract";
+
+export class courses extends Abstract {
   public title: string; // public property
   //   private author: string; // part of #1 , private property
   private rating: number;
@@ -12,6 +14,7 @@ export class courses {
 
   // 2nd way to give value to private property #2
   constructor(private author) {
+    super();
     console.log(`Author: ${author}`);
   }
 
@@ -57,6 +60,25 @@ export class courses {
   public publishDate() {
     console.log("Date is Jan");
   }
+
+  //inherited abstract
+
+  public abstract1() {
+    if (this.title) {
+      console.log("abstract1 works");
+    }
+  }
+
+  protected abstract2() {
+    if (this.title) {
+      console.log("abstract2 works");
+    }
+  }
+
+  get abstract22() {
+    return this.abstract2();
+  }
+
   // getter and setter for price
   get courseprice() {
     return this.price;

@@ -1,14 +1,31 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
-var courses = /** @class */ (function () {
+var abstract_1 = require("./abstract");
+var courses = /** @class */ (function (_super) {
+    __extends(courses, _super);
     // one way to give value to private property outside of class #1
     //   constructor(public auth) {
     //     this.author = auth;
     //   }
     // 2nd way to give value to private property #2
     function courses(author) {
-        this.author = author;
+        var _this = _super.call(this) || this;
+        _this.author = author;
         console.log("Author: " + author);
+        return _this;
     }
     courses.prototype.course1 = function () {
         if (this.title) {
@@ -44,6 +61,24 @@ var courses = /** @class */ (function () {
     courses.prototype.publishDate = function () {
         console.log("Date is Jan");
     };
+    //inherited abstract
+    courses.prototype.abstract1 = function () {
+        if (this.title) {
+            console.log("abstract1 works");
+        }
+    };
+    courses.prototype.abstract2 = function () {
+        if (this.title) {
+            console.log("abstract2 works");
+        }
+    };
+    Object.defineProperty(courses.prototype, "abstract22", {
+        get: function () {
+            return this.abstract2();
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(courses.prototype, "courseprice", {
         // getter and setter for price
         get: function () {
@@ -69,7 +104,7 @@ var courses = /** @class */ (function () {
         configurable: true
     });
     return courses;
-}());
+}(abstract_1.Abstract));
 exports.courses = courses;
 // let cour = new courses("alex"); // instance creation to access class
 // //public property
